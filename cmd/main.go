@@ -22,8 +22,8 @@ func main() {
 	logger, _ := zap.NewDevelopment()
 	defer logger.Sync()
 
-	logger.Sugar().Infow("load config", "file", cfgFilename)
-	loader := config.NewFileLoader(afero.NewOsFs(), cfgFilename)
+	logger.Sugar().Infow("load config", "file", *cfgFilename)
+	loader := config.NewFileLoader(afero.NewOsFs(), *cfgFilename)
 
 	cfg, err := loader.Load()
 	if err != nil {
@@ -70,3 +70,4 @@ func main() {
 	}
 
 }
+
