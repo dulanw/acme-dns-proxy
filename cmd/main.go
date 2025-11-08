@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"os/signal"
+	"flag"
 
 	"github.com/matthiasng/acme-dns-proxy/config"
 	"github.com/matthiasng/acme-dns-proxy/dns"
@@ -15,7 +16,8 @@ import (
 
 func main() {
 	// #todo flags
-	cfgFilename := "./config.yml"
+	cfgFilename := flag.String("config", "./config.yml", "path to config file")
+	flag.Parse() // parse command-line flags
 
 	logger, _ := zap.NewDevelopment()
 	defer logger.Sync()
